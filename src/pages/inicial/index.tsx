@@ -3,12 +3,12 @@ import Moment from 'react-moment';
 import DataTable from 'react-data-table-component';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie, Bar } from 'react-chartjs-2';
-import Alert from 'react-bootstrap/Alert';
 import { format, addDays } from 'date-fns';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import AlertCustom from '@/components/alerts/Alert';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -95,76 +95,65 @@ export default class Inicial extends Component {
                     </div>
                 </div>
 
-
-                <div className="row">
-                    <div className="col-lg-6 col-12">
-                        <FullCalendar
-                            editable={true}
-                            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                            weekends={this.state.calendarWeekends}
-                            events={this.state.calendarEvents}
-                            locale = {'pt-BR'}
-                        />
-                    </div>
-                    <div className="col-lg-3 col-6 text-right">
-                        <ul className=''>
-                            <li>Bootstrap</li>
-                            <li>DataTables</li>
-                            <li>ChartJS</li>
-                            <li>Date FNS</li>
-                            <li>Full Calendar</li>
-                        </ul>
-                    </div>
-                </div>
-            
-                <Alert key="danger" variant="danger">
-                    Teste de Alerta Bootstrap
-                </Alert>
-                <Alert key="warning" variant="warning">
-                    Teste de Alerta Bootstrap
-                </Alert>
-    
                 <section className="content">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-lg-3 col-12">
-                                <div className="small-box bg-success">
-                                    <div className="inner">
-                                        <h3>53<sup style={{ fontSize: 20 }}>%</sup></h3>
-                                        <p>Bounce Rate</p>
-                                    </div>
-                                    <div className="icon">
-                                        <i className="ion ion-stats-bars" />
-                                    </div>
-                                    <a href="/" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                    <AlertCustom variant="danger" texto="teste"></AlertCustom>
+
+                    <div className="row">
+                        <div className="col-lg-6 col-12">
+                            <FullCalendar
+                                editable={true}
+                                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                                weekends={this.state.calendarWeekends}
+                                events={this.state.calendarEvents}
+                                locale = {'pt-BR'}
+                            />
+                        </div>
+                        <div className="col-lg-3 col-6 text-right">
+                            <ul>
+                                <li>Bootstrap</li>
+                                <li>DataTables</li>
+                                <li>ChartJS</li>
+                                <li>Date FNS</li>
+                                <li>Full Calendar</li>
+                            </ul>
+                        </div>
+                    </div>
+                                
+                    <div className="row">
+                        <div className="col-lg-3 col-12">
+                            <div className="small-box bg-success">
+                                <div className="inner">
+                                    <h3>53<sup style={{ fontSize: 20 }}>%</sup></h3>
+                                    <p>Bounce Rate</p>
                                 </div>
+                                <div className="icon">
+                                    <i className="ion ion-stats-bars" />
+                                </div>
+                                <a href="/" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
                             </div>
                         </div>
+                    </div>
 
-                        <div className="row">
-                            <div className='col-lg-9 col-12'>
+                    <div className="row">
+                        <div className='col-lg-9 col-12'>
                             <DataTable
                                 title="Datatables Teste"
                                 columns={columns}
                                 data={data}
                                 selectableRows
                                 expandableRows
-                                defaultSortFieldId={1} 
-                                pagination
                             />
-                            </div>
-                            <div className="col-lg-3 col-12">
-                                <Pie data={dataChart} />
-                            </div>
                         </div>
-
                         
+                        <div className="col-lg-3 col-12">
+                            <Pie data={dataChart} />
+                        </div>
                     </div>
+                        
                 </section>
-                <hr/><hr/><hr/><hr/>
+                <hr /><hr /><hr /><hr />
             </div>
         </div>
-
     )
   }
 }
