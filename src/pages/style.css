@@ -19,3 +19,7 @@
   outline: none;
   cursor: pointer;
 }
+
+.main-header {
+  border-bottom: 1px solid var(--cor-principal);
+}
