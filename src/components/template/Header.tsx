@@ -1,13 +1,22 @@
-import React, { Component } from 'react'
+import { useBase } from '../../contexts/base';
+import React, { Component } from 'react';
 
-export default class Header extends Component {
-  render() {
+export default function Header(){
+
+    const {menuOpen, setMenuOpen} = useBase();
+
     return (
-      <div><nav className="main-header navbar navbar-expand navbar-white navbar-light">
-        <ul className="navbar-nav">          
-          <li className="nav-item d-none d-sm-inline-block">
-            <a href="/" className="nav-link">Inicial</a>
+      <div>
+        <nav className="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul className="navbar-nav">
+
+        <li className="nav-item">
+            <a className="nav-link" id="pushmenu" onClick={() => setMenuOpen(menuOpen)} role="button"></a>
           </li>
+          <li className="nav-item d-none d-sm-inline-block">
+            <a href="/" className="nav-link"></a>
+          </li>
+        
         </ul>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item dropdown">
@@ -91,5 +100,4 @@ export default class Header extends Component {
       </nav>
       </div>
     )
-  }
 }

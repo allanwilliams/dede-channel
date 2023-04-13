@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 interface BaseContextData {
   modalOpen: boolean;
   alertOpen: boolean;
+  menuOpen: boolean;
   modalText: string;
   alertText: string;
   alertVariant: string;
@@ -11,6 +12,7 @@ interface BaseContextData {
   setAlertOpen: Function;
   setAlertText: Function;
   setAlertVariant: Function;
+  setMenuOpen: Function;
 };
 
 const BaseContext = createContext<BaseContextData>({} as BaseContextData);
@@ -21,6 +23,7 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
   const [ modalOpen, setModalOpen ] = useState<boolean>(false)
   const [ modalText, setModalText ] = useState<string>('')
   const [ alertOpen, setAlertOpen ] = useState<boolean>(false)
+  const [ menuOpen, setMenuOpen ] = useState<boolean>(true)
   const [ alertText, setAlertText ] = useState<string>('')
   const [ alertVariant, setAlertVariant ] = useState<string>('')
   
@@ -34,13 +37,15 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
           modalOpen,
           modalText,
           alertOpen,
+          menuOpen,
           alertText,
           alertVariant,
           setModalOpen,
           setModalText,
           setAlertOpen,
           setAlertText,
-          setAlertVariant
+          setAlertVariant,
+          setMenuOpen
       }}>
         {children}
     </BaseContext.Provider>

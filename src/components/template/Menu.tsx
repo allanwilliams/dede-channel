@@ -1,9 +1,19 @@
-import React, { Component } from 'react'
-import Link from 'next/link';
-export default class Menu extends Component {
-  render() {
+import { useBase } from '../../contexts/base';
+import React from 'react';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
+
+export default function Menu() {
+
+    const {menuOpen} = useBase();
+
     return (
-        <div>
+        <>
+        <Offcanvas show={menuOpen} onHide={!menuOpen}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Menu</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
             <aside className="main-sidebar background-principal elevation-4">
                 <a href="" className="brand-link">
                     <img src="dist/img/logo_nossa_menu.png" alt="Nossa Defensoria" className="brand-image elevation-1" style={{ opacity: '.8' }} />
@@ -59,8 +69,9 @@ export default class Menu extends Component {
                     </nav>
                 </div>
             </aside>
-        </div>
+          </Offcanvas.Body>
+        </Offcanvas>
+      </>
 
     )
-  }
 }
