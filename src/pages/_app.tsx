@@ -6,12 +6,15 @@ import Menu from '../template-admin-lte/Menu';
 import Head from 'next/head'
 
 import './style.css';
+import { BaseProvider } from '../contexts/base';
 
 export default function App({ Component, pageProps }: AppProps) {
   return <>
       <Header />
       <Menu />
-      <Component {...pageProps} />
+      <BaseProvider>
+        <Component {...pageProps} />
+      </BaseProvider>
       <Footer />
   </>
 }

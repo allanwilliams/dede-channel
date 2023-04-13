@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import Moment from 'react-moment';
+import React, { Component, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie, Bar } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import { format, addDays } from 'date-fns';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import AlertCustom from '@/components/alerts/Alert';
+import { useBase } from '../../contexts/base'
+import ModalSistema from '../../components/modal/Modal';
+import AlertBootstrap from '@/components/alerts/Alert';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -63,14 +65,22 @@ export const dataChart = {
         borderWidth: 1,
       },
     ],
-  };
+};
 
 const dateFns = format(new Date(), 'dd/MM/yyyy')
 
 
-export default class Inicial extends Component {
+export default function Inicial() {
+    const { setModalText, setAlertOpen, setAlertText } = useBase();
 
-    state = {
+    useEffect(() => {
+        setAlertOpen(true);
+        setAlertText('Olá, sou um alert contextualizado!')
+        setModalText('asasssdsdaas');
+    }, [])
+
+
+    let state = {
         canDrop: true,
         calendarWeekends: true,
         calendarEvents: [
@@ -80,7 +90,6 @@ export default class Inicial extends Component {
         ]
     };
 
-  render() {
     return (
         <div>
             <div className="content-wrapper">
@@ -96,19 +105,35 @@ export default class Inicial extends Component {
                 </div>
 
                 <section className="content">
-                    <AlertCustom variant="danger" texto="teste"></AlertCustom>
+                    <div className="row">   
+
+                        <AlertBootstrap variant='success'></AlertBootstrap>
+
+                        {/* <div className="col-lg-3 col-12">
+                            <AlertCustom variant="success" texto="Usuário criado"></AlertCustom>
+                        </div>
+                        <div className="col-lg-3 col-12">
+                            <AlertCustom variant="danger"  texto="Usuário erro"></AlertCustom>
+                        </div>
+                        <div className="col-lg-3 col-12">
+                            <AlertCustom variant="warning"  texto="Usuário com ressalvas"></AlertCustom>
+                        </div>
+                        <div className="col-lg-3 col-12">
+                            <AlertCustom variant="primary"  texto="Usuário atualizado"></AlertCustom>
+                        </div> */}
+                    </div>
 
                     <div className="row">
                         <div className="col-lg-6 col-12">
                             <FullCalendar
                                 editable={true}
                                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                                weekends={this.state.calendarWeekends}
-                                events={this.state.calendarEvents}
+                                weekends={state.calendarWeekends}
+                                events={state.calendarEvents}
                                 locale = {'pt-BR'}
                             />
                         </div>
-                        <div className="col-lg-3 col-6 text-right">
+                        <div className="col-lg-6 col-12">
                             <ul>
                                 <li>Bootstrap</li>
                                 <li>DataTables</li>
@@ -116,6 +141,7 @@ export default class Inicial extends Component {
                                 <li>Date FNS</li>
                                 <li>Full Calendar</li>
                             </ul>
+                            <ModalSistema/>
                         </div>
                     </div>
                                 
@@ -156,4 +182,3 @@ export default class Inicial extends Component {
         </div>
     )
   }
-}
