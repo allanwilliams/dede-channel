@@ -7,10 +7,8 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import AlertCustom from '@/components/alerts/Alert';
 import { useBase } from '../../contexts/base'
 import ModalSistema from '../../components/modal/Modal';
-import AlertBootstrap from '@/components/alerts/Alert';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -71,10 +69,11 @@ const dateFns = format(new Date(), 'dd/MM/yyyy')
 
 
 export default function Inicial() {
-    const { setModalText, setAlertOpen, setAlertText } = useBase();
+    const { setModalText, setAlertOpen, setAlertText, setAlertVariant } = useBase();
 
     useEffect(() => {
         setAlertOpen(true);
+        setAlertVariant('primary');
         setAlertText('Olá, sou um alert contextualizado!')
         setModalText('asasssdsdaas');
     }, [])
@@ -107,7 +106,7 @@ export default function Inicial() {
                 <section className="content">
                     <div className="row">   
 
-                        <AlertBootstrap variant='success'></AlertBootstrap>
+                        {/* <AlertBootstrap variant='success'></AlertBootstrap> */}
 
                         {/* <div className="col-lg-3 col-12">
                             <AlertCustom variant="success" texto="Usuário criado"></AlertCustom>

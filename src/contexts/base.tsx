@@ -5,10 +5,12 @@ interface BaseContextData {
   alertOpen: boolean;
   modalText: string;
   alertText: string;
+  alertVariant: string;
   setModalOpen: Function;
   setModalText: Function;
   setAlertOpen: Function;
   setAlertText: Function;
+  setAlertVariant: Function;
 };
 
 const BaseContext = createContext<BaseContextData>({} as BaseContextData);
@@ -18,9 +20,10 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
 
   const [ modalOpen, setModalOpen ] = useState<boolean>(false)
   const [ modalText, setModalText ] = useState<string>('')
-
   const [ alertOpen, setAlertOpen ] = useState<boolean>(false)
   const [ alertText, setAlertText ] = useState<string>('')
+  const [ alertVariant, setAlertVariant ] = useState<string>('')
+  
   
     useEffect(() => {
     }, [])
@@ -32,10 +35,12 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
           modalText,
           alertOpen,
           alertText,
+          alertVariant,
           setModalOpen,
           setModalText,
           setAlertOpen,
-          setAlertText
+          setAlertText,
+          setAlertVariant
       }}>
         {children}
     </BaseContext.Provider>
