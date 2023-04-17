@@ -1,0 +1,32 @@
+{
+    "itensMenu": [
+        {
+            "link": "/agenda",
+            "nome": "Agenda",
+            "novo": true,
+            "icone": "fa-bars",
+            "separador": false
+        },
+        {
+            "link": "",
+            "nome": "",
+            "novo": false,
+            "icone": "",
+            "separador": true
+        },
+        {
+            "link": "/",
+            "nome": "Segundo Link",
+            "novo": false,
+            "icone": "fa-ellipsis-h",
+            "separador": false
+        },
+        {
+            "link": "/",
+            "nome": "Terceiro Link",
+            "novo": false,
+            "icone": "fa-ellipsis-h",
+            "separador": false
+        }
+    ]
+}

@@ -2,11 +2,7 @@ import React, { Component, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { format, addDays } from 'date-fns';
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
+import { format } from 'date-fns';
 import { useBase } from '../../contexts/base'
 import ModalSistema from '../../components/modal/Modal';
 
@@ -70,7 +66,6 @@ const dateFns = format(new Date(), 'dd/MM/yyyy')
 
 export default function Inicial() {
     const { setModalText, setAlertOpen, setAlertText, setAlertVariant } = useBase();
-    const {menuOpen, setMenuOpen} = useBase();
 
     useEffect(() => {
         setAlertOpen(true);
@@ -78,17 +73,6 @@ export default function Inicial() {
         setAlertText('Olá, sou um alert contextualizado!')
         setModalText('asasssdsdaas');
     }, [])
-
-
-    let state = {
-        canDrop: true,
-        calendarWeekends: true,
-        calendarEvents: [
-            { title: "Evento 1", start: new Date() },
-            { title: "Evento 2", start: addDays(new Date(), 3) },
-            { title: "Evento 3", start: addDays(new Date(), 2) }
-        ]
-    };
 
     return (
         <div>
@@ -104,38 +88,9 @@ export default function Inicial() {
             </div>
 
             <section className="content">
-                <div className="row">   
-
-                    {/* <AlertBootstrap variant='success'></AlertBootstrap> */}
-
-                    {/* <div className="col-lg-3 col-12">
-                        <AlertCustom variant="success" texto="Usuário criado"></AlertCustom>
-                    </div>
-                    <div className="col-lg-3 col-12">
-                        <AlertCustom variant="danger"  texto="Usuário erro"></AlertCustom>
-                    </div>
-                    <div className="col-lg-3 col-12">
-                        <AlertCustom variant="warning"  texto="Usuário com ressalvas"></AlertCustom>
-                    </div>
-                    <div className="col-lg-3 col-12">
-                        <AlertCustom variant="primary"  texto="Usuário atualizado"></AlertCustom>
-                    </div> */}
-                </div>
-
                 <div className="row">
                     <div className="col-lg-6 col-12">
-                        <FullCalendar
-                            editable={true}
-                            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                            weekends={state.calendarWeekends}
-                            events={state.calendarEvents}
-                            locale = {'pt-BR'}
-                        />
-
-                        <a className="nav-link" id="pushmenu" onClick={() => setMenuOpen(!menuOpen)} role="button">
-                            <h1>abrir e fechar menu</h1>
-                        </a>
-
+                        
                     </div>
                     <div className="col-lg-6 col-12">
                         <ul>

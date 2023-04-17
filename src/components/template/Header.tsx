@@ -19,7 +19,9 @@ export default function Header(){
         className="main-header navbar navbar-expand navbar-white navbar-light"
       >
         <Nav.Item  className="nav-item">
-          <Nav.Link onClick={() => gerenciaLayout()}><i className='pointer fa fa-bars' /></Nav.Link>
+          <Nav.Link onClick={() => gerenciaLayout()}>
+            <i className='fa fa-bars pointer text-success' />
+          </Nav.Link>
         </Nav.Item>
       </Nav>
     )
