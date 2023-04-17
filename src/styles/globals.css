@@ -9,7 +9,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --cor-principal: #005e32;
-
+  --margin-content-size: 250px;
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #005e32 0deg,
@@ -97,10 +97,18 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.content-wrapper {
+  margin-left: var(--margin-content-size) !important; 
+  padding: 0 1rem 5rem 1rem;
+}
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.pointer { 
+  cursor: pointer;
 }
 
 footer {
@@ -112,6 +120,7 @@ footer {
   left: 0;
   position: absolute;
   right: 0;
+  padding: .7rem;
 }
 
 .background-principal {

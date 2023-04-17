@@ -8,15 +8,18 @@ import './style.css';
 import { BaseProvider, useBase } from '../contexts/base';
 
 export default function App({ Component, pageProps }: AppProps) {
+
   return <>
       <BaseProvider>
-        <> 
+        <>
+          <Menu />          
           <Header />
-          <Menu />       
-          <AlertBootstrap></AlertBootstrap>
-          <Component {...pageProps} />
+          <div className='content-wrapper'>
+            <AlertBootstrap></AlertBootstrap>
+            <Component {...pageProps} />
+            <Footer />
+          </div>
         </>        
-      </BaseProvider>
-      <Footer />
+      </BaseProvider>      
   </>
 }

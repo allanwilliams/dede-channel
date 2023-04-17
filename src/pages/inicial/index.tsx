@@ -70,6 +70,7 @@ const dateFns = format(new Date(), 'dd/MM/yyyy')
 
 export default function Inicial() {
     const { setModalText, setAlertOpen, setAlertText, setAlertVariant } = useBase();
+    const {menuOpen, setMenuOpen} = useBase();
 
     useEffect(() => {
         setAlertOpen(true);
@@ -91,93 +92,95 @@ export default function Inicial() {
 
     return (
         <div>
-            <div className="content-wrapper">
-                <div className="content-header">
-                    <div className="container-fluid">
-                        <div className="row mb-2">
-                            <div className="col-sm-6">
-                                <h1 className="m-0">Tela Inicial</h1>
-                                {dateFns}
+            <div className="content-header">
+                <div className="container-fluid">
+                    <div className="row mb-2">
+                        <div className="col-sm-6">
+                            <h1 className="m-0">Tela Inicial</h1>
+                            {dateFns}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section className="content">
+                <div className="row">   
+
+                    {/* <AlertBootstrap variant='success'></AlertBootstrap> */}
+
+                    {/* <div className="col-lg-3 col-12">
+                        <AlertCustom variant="success" texto="Usuário criado"></AlertCustom>
+                    </div>
+                    <div className="col-lg-3 col-12">
+                        <AlertCustom variant="danger"  texto="Usuário erro"></AlertCustom>
+                    </div>
+                    <div className="col-lg-3 col-12">
+                        <AlertCustom variant="warning"  texto="Usuário com ressalvas"></AlertCustom>
+                    </div>
+                    <div className="col-lg-3 col-12">
+                        <AlertCustom variant="primary"  texto="Usuário atualizado"></AlertCustom>
+                    </div> */}
+                </div>
+
+                <div className="row">
+                    <div className="col-lg-6 col-12">
+                        <FullCalendar
+                            editable={true}
+                            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                            weekends={state.calendarWeekends}
+                            events={state.calendarEvents}
+                            locale = {'pt-BR'}
+                        />
+
+                        <a className="nav-link" id="pushmenu" onClick={() => setMenuOpen(!menuOpen)} role="button">
+                            <h1>abrir e fechar menu</h1>
+                        </a>
+
+                    </div>
+                    <div className="col-lg-6 col-12">
+                        <ul>
+                            <li>Bootstrap</li>
+                            <li>DataTables</li>
+                            <li>ChartJS</li>
+                            <li>Date FNS</li>
+                            <li>Full Calendar</li>
+                        </ul>
+                        <ModalSistema/>
+                    </div>
+                </div>
+                            
+                <div className="row">
+                    <div className="col-lg-3 col-12">
+                        <div className="small-box bg-success">
+                            <div className="inner">
+                                <h3>53<sup style={{ fontSize: 20 }}>%</sup></h3>
+                                <p>Bounce Rate</p>
                             </div>
+                            <div className="icon">
+                                <i className="ion ion-stats-bars" />
+                            </div>
+                            <a href="/" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
                         </div>
                     </div>
                 </div>
 
-                <section className="content">
-                    <div className="row">   
-
-                        {/* <AlertBootstrap variant='success'></AlertBootstrap> */}
-
-                        {/* <div className="col-lg-3 col-12">
-                            <AlertCustom variant="success" texto="Usuário criado"></AlertCustom>
-                        </div>
-                        <div className="col-lg-3 col-12">
-                            <AlertCustom variant="danger"  texto="Usuário erro"></AlertCustom>
-                        </div>
-                        <div className="col-lg-3 col-12">
-                            <AlertCustom variant="warning"  texto="Usuário com ressalvas"></AlertCustom>
-                        </div>
-                        <div className="col-lg-3 col-12">
-                            <AlertCustom variant="primary"  texto="Usuário atualizado"></AlertCustom>
-                        </div> */}
+                <div className="row">
+                    <div className='col-lg-9 col-12'>
+                        <DataTable
+                            title="Datatables Teste"
+                            columns={columns}
+                            data={data}
+                            selectableRows
+                            expandableRows
+                        />
                     </div>
-
-                    <div className="row">
-                        <div className="col-lg-6 col-12">
-                            <FullCalendar
-                                editable={true}
-                                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                                weekends={state.calendarWeekends}
-                                events={state.calendarEvents}
-                                locale = {'pt-BR'}
-                            />
-                        </div>
-                        <div className="col-lg-6 col-12">
-                            <ul>
-                                <li>Bootstrap</li>
-                                <li>DataTables</li>
-                                <li>ChartJS</li>
-                                <li>Date FNS</li>
-                                <li>Full Calendar</li>
-                            </ul>
-                            <ModalSistema/>
-                        </div>
+                    
+                    <div className="col-lg-3 col-12">
+                        <Pie data={dataChart} />
                     </div>
-                                
-                    <div className="row">
-                        <div className="col-lg-3 col-12">
-                            <div className="small-box bg-success">
-                                <div className="inner">
-                                    <h3>53<sup style={{ fontSize: 20 }}>%</sup></h3>
-                                    <p>Bounce Rate</p>
-                                </div>
-                                <div className="icon">
-                                    <i className="ion ion-stats-bars" />
-                                </div>
-                                <a href="/" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className='col-lg-9 col-12'>
-                            <DataTable
-                                title="Datatables Teste"
-                                columns={columns}
-                                data={data}
-                                selectableRows
-                                expandableRows
-                            />
-                        </div>
-                        
-                        <div className="col-lg-3 col-12">
-                            <Pie data={dataChart} />
-                        </div>
-                    </div>
-                        
-                </section>
-                <hr /><hr /><hr /><hr />
-            </div>
+                </div>
+                    
+            </section>
         </div>
     )
   }

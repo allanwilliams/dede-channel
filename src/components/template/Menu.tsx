@@ -1,22 +1,23 @@
 import { useBase } from '../../contexts/base';
 import React from 'react';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import 'animate.css';
 
 
 export default function Menu() {
 
     const {menuOpen} = useBase();
 
+    let classeAnimada = 'main-sidebar background-principal elevation-4 animate__animated '
+    if (menuOpen){
+        classeAnimada += ' animate__slideInLeft'
+    }else{ 
+        classeAnimada += ' animate__slideOutLeft'
+    }
+
     return (
-        <>
-        <Offcanvas show={menuOpen} onHide={!menuOpen}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Menu</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <aside className="main-sidebar background-principal elevation-4">
+        <div className={classeAnimada}>
                 <a href="" className="brand-link">
-                    <img src="dist/img/logo_nossa_menu.png" alt="Nossa Defensoria" className="brand-image elevation-1" style={{ opacity: '.8' }} />
+                    <img src="dist/img/logo_nossa_menu.png" alt="Nossa Defensoria" className="brand-image" style={{ opacity: '.8' }} />
                     <span className="brand-text font-weight-light"> -  </span>
                 </a>
                 <div className="sidebar">
@@ -68,10 +69,33 @@ export default function Menu() {
                         </ul>
                     </nav>
                 </div>
-            </aside>
-          </Offcanvas.Body>
-        </Offcanvas>
-      </>
-
+        </div>
     )
+
+    // return (
+    //     <>
+    
+        
+    //     {/* <Offcanvas show={menuOpen} responsive="lg">
+    //         <Offcanvas.Header closeButton>
+    //             <Offcanvas.Title>Responsive offcanvas</Offcanvas.Title>
+    //         </Offcanvas.Header>
+    //         <Offcanvas.Body>
+                
+    //         </Offcanvas.Body>
+    //     </Offcanvas> */}
+
+            
+    //     {/* <Offcanvas show={menuOpen} 
+    //         backdrop="static">
+    //         <Offcanvas.Header closeButton>
+    //             <Offcanvas.Title>Menu</Offcanvas.Title>
+    //         </Offcanvas.Header>
+    //         <Offcanvas.Body>
+                
+    //         </Offcanvas.Body>
+    //     </Offcanvas> */}
+    //   </>
+
+    // )
 }

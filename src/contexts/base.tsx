@@ -23,7 +23,7 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
   const [ modalOpen, setModalOpen ] = useState<boolean>(false)
   const [ modalText, setModalText ] = useState<string>('')
   const [ alertOpen, setAlertOpen ] = useState<boolean>(false)
-  const [ menuOpen, setMenuOpen ] = useState<boolean>(true)
+  const [ menuOpen,  setMenuOpen  ] = useState<boolean>(true)
   const [ alertText, setAlertText ] = useState<string>('')
   const [ alertVariant, setAlertVariant ] = useState<string>('')
   
