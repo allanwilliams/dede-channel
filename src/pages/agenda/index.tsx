@@ -4,13 +4,14 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import { useBase } from '@/contexts/base';
+import {IEvento} from '../../interfaces/IEvento';
 
 
 export default function Agenda() {
+    
+    const { weekendsVisible, setWeekendsVisible, currentEvents, setCurrentEvents } = useBase();
 
-    const [weekendsVisible , setWeekendsVisible] = useState<boolean>(true);
-    const [currentEvents , setCurrentEvents] = useState([]);
-  
     return (
         <>
         <div className='demo-app-sidebar-section d-flex'>
@@ -117,11 +118,11 @@ export default function Agenda() {
     )
   }
   
-  function renderSidebarEvent(event: { id: React.Key | null | undefined; start: Date; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined }) {
+  function renderSidebarEvent(event: IEvento) {
     return (
       <li key={event.id}>
         <p>
-          {event.title} - 
+          {event.title} - &nbsp;
           <span><strong>{formatDate(event.start, {
              timeZone: 'America/Fortaleza',
              locale: 'pt-BR'
