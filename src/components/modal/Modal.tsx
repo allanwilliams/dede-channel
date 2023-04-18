@@ -17,7 +17,7 @@ export default function ModalBootstrap() {
   return (
     <>
       <Button variant="primary" onClick={AbrirModal}>
-        Abrir Modal
+        <i className='fa fa-eye' /> Ver mais
       </Button>
 
       <Modal 

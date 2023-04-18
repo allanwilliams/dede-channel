@@ -4,29 +4,28 @@
             "link": "/agenda",
             "nome": "Agenda",
             "novo": true,
-            "icone": "fa-bars",
-            "separador": false
+            "icone": "fa-bars"
         },
         {
-            "link": "",
-            "nome": "",
-            "novo": false,
-            "icone": "",
+            "link": "/componentes",
+            "nome": "Componentes",
+            "novo": true,
+            "icone": "fa-bars"
+        },
+        {
             "separador": true
         },
         {
             "link": "/",
             "nome": "Segundo Link",
             "novo": false,
-            "icone": "fa-ellipsis-h",
-            "separador": false
+            "icone": "fa-ellipsis-h"
         },
         {
             "link": "/",
             "nome": "Terceiro Link",
             "novo": false,
-            "icone": "fa-ellipsis-h",
-            "separador": false
+            "icone": "fa-ellipsis-h"
         }
     ]
 }

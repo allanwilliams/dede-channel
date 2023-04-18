@@ -26,10 +26,6 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
   const [ menuOpen,  setMenuOpen  ] = useState<boolean>(true)
   const [ alertText, setAlertText ] = useState<string>('')
   const [ alertVariant, setAlertVariant ] = useState<string>('')
-  
-  
-    useEffect(() => {
-    }, [])
 
   return (
     <BaseContext.Provider 

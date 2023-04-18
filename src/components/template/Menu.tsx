@@ -1,12 +1,12 @@
 import { useBase } from '../../contexts/base';
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'animate.css';
 import ListaMenu from './ListaMenu';
 
 export default function Menu() {
 
     const {menuOpen} = useBase();
-    let classMenuEffect = menuOpen ? "animate__slideInLeft" : "animate__slideOutLeft" ;
+    let classMenuEffect = menuOpen ? "animate__slideInLeft" : "animate__slideOutLeft";
     
     return (
         <div className={`main-sidebar background-principal elevation-4 animate__animated ${classMenuEffect}`}>

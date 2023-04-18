@@ -1,10 +1,12 @@
 import { useBase } from '../../contexts/base';
 import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
+import { format } from 'date-fns';
 
 export default function Header(){
 
     const {menuOpen, setMenuOpen} = useBase();
+    const dateFns = format(new Date(), 'dd/MM/yyyy')
 
     function gerenciaLayout(){
       setMenuOpen(!menuOpen);
@@ -22,6 +24,10 @@ export default function Header(){
           <Nav.Link onClick={() => gerenciaLayout()}>
             <i className='fa fa-bars pointer text-success' />
           </Nav.Link>
+        </Nav.Item>
+
+        <Nav.Item className="justify-content-end">
+          {dateFns}
         </Nav.Item>
       </Nav>
     )

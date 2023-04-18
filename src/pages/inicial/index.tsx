@@ -1,38 +1,11 @@
-import React, { Component, useEffect } from 'react';
-import DataTable from 'react-data-table-component';
+import React, { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { format } from 'date-fns';
 import { useBase } from '../../contexts/base'
 import ModalSistema from '../../components/modal/Modal';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const columns = [
-    {
-        name: 'Texto',
-        selector: (row: { title: any; }) => row.title,
-        sortable: true,
-    },
-    {
-        name: 'Ano',
-        selector: (row: { year: any; }) => row.year,
-        sortable: true,
-    },
-];
-
-const data = [
-    {
-        id: 1,
-        title: 'Beetlejuice',
-        year: '1988',
-    },
-    {
-        id: 2,
-        title: 'Ghostbusters',
-        year: '1984',
-    },
-];
 
 export const dataChart = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -61,7 +34,6 @@ export const dataChart = {
     ],
 };
 
-const dateFns = format(new Date(), 'dd/MM/yyyy')
 
 
 export default function Inicial() {
@@ -80,8 +52,7 @@ export default function Inicial() {
                 <div className="container-fluid">
                     <div className="row mb-2">
                         <div className="col-sm-6">
-                            <h1 className="m-0">Tela Inicial</h1>
-                            {dateFns}
+                            <h1 className="m-0">Tela Inicial</h1>                            
                         </div>
                     </div>
                 </div>
@@ -121,13 +92,7 @@ export default function Inicial() {
 
                 <div className="row">
                     <div className='col-lg-9 col-12'>
-                        <DataTable
-                            title="Datatables Teste"
-                            columns={columns}
-                            data={data}
-                            selectableRows
-                            expandableRows
-                        />
+                        
                     </div>
                     
                     <div className="col-lg-3 col-12">
