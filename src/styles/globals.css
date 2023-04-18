@@ -98,6 +98,7 @@ body {
 }
 
 .content-wrapper {
+  background-color: #fff;
   margin-left: var(--margin-content-size) !important; 
   padding: 0 1rem 5rem 1rem;
 }
@@ -105,6 +106,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.center-flex {
+  display: flex;
+  justify-content: center;
 }
 
 .pointer { 

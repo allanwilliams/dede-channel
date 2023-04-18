@@ -52,7 +52,7 @@ export default function Inicial() {
                 <div className="container-fluid">
                     <div className="row mb-2">
                         <div className="col-sm-6">
-                            <h1 className="m-0">Tela Inicial</h1>                            
+                            <h1 className="m-0">Tela Inicial </h1>                            
                         </div>
                     </div>
                 </div>
@@ -60,17 +60,7 @@ export default function Inicial() {
 
             <section className="content">
                 <div className="row">
-                    <div className="col-lg-6 col-12">
-                        
-                    </div>
-                    <div className="col-lg-6 col-12">
-                        <ul>
-                            <li>Bootstrap</li>
-                            <li>DataTables</li>
-                            <li>ChartJS</li>
-                            <li>Date FNS</li>
-                            <li>Full Calendar</li>
-                        </ul>
+                    <div className="col-md-6 col-xs-12">
                         <ModalSistema/>
                     </div>
                 </div>

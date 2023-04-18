@@ -7,12 +7,6 @@
             "icone": "fa-bars"
         },
         {
-            "link": "/componentes",
-            "nome": "Componentes",
-            "novo": true,
-            "icone": "fa-bars"
-        },
-        {
             "separador": true
         },
         {
