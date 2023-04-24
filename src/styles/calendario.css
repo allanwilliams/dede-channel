@@ -26,10 +26,16 @@ body > div { /* the react root */
 
 .demo-app-main {
   flex-grow: 1;
-  padding: 3em;
+  padding: 1em;
 }
 
 .fc { /* the calendar root */
   max-width: 1100px;
   margin: 0 auto;
+}
+
+#eventos {
+  height: 70vh;
+  max-height: 70vh;
+  overflow-y: auto;
 }

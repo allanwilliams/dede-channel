@@ -30,15 +30,15 @@ export default function Agenda() {
             <div className="col-md-12">            
                 <div className='demo-app'>
                     <div className='demo-app-sidebar'>
-                        <div className='demo-app-sidebar-section'>
+                        {/* <div className='demo-app-sidebar-section'>
                             <h2>Instruções</h2>
                             <ul>
                             <li>Selecione a data desejada para criar um novo evento</li>
                             <li>Arraste para remarcar seu evento</li>
                             <li>Clique no evento para deletá-lo</li>
                             </ul>
-                        </div>        
-                        <div className='demo-app-sidebar-section'>
+                        </div>         */}
+                        <div className='demo-app-sidebar-section' id="eventos">
                             <h2>Eventos ({currentEvents.length})</h2>
                             <ul>
                             {currentEvents.map(renderSidebarEvent)}
@@ -53,14 +53,14 @@ export default function Agenda() {
                                 center: 'title',
                                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
                             }}
-                            initialView='dayGridMonth'
+                            initialView='timeGridWeek'
                             locale = {'pt-BR'}
                             editable={true}
                             selectable={true}
                             selectMirror={true}
                             dayMaxEvents={true}
                             weekends={weekendsVisible}
-                            initialEvents={currentEvents} // alternatively, use the `events` setting to fetch from a feed
+                            initialEvents={currentEvents} 
                             select={escolherData}
                             eventContent={exibirEvento} // custom render function
                             eventClick={deletarEvento}
@@ -123,10 +123,10 @@ export default function Agenda() {
       <li key={event.id}>
         <p>
           {event.title} - &nbsp;
-          <span><strong>{formatDate(event.start, {
+          <strong>{formatDate(event.start, {
              timeZone: 'America/Fortaleza',
              locale: 'pt-BR'
-          })}</strong></span>
+          })}</strong>
         </p>
       </li>
     )

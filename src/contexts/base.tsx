@@ -4,6 +4,7 @@ import api from '../services/api'
 import feriadoService from '../services/feriado'
 import {IEvento} from '../interfaces/IEvento'
 import { IFeriado } from '@/interfaces/IFeriado';
+import debounce from 'lodash.debounce';
 
 interface BaseContextData {
   modalOpen: boolean;
@@ -37,11 +38,15 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
   const [ alertText, setAlertText ] = useState<string>('')
   const [ alertVariant, setAlertVariant ] = useState<string>('')
   const [ weekendsVisible , setWeekendsVisible] = useState<boolean>(true);
-  const [ currentEvents , setCurrentEvents] = useState([]);
+  const [ currentEvents , setCurrentEvents] = useState<Array<IEvento>>([]);
 
-  useEffect(() => {
-    getNewToken()
-  }, [])
+  useEffect(
+    debounce(() => {
+      getNewToken()
+    }, 300), 
+    []
+  );
+
 
   function getNewToken(){
     getToken('dona.dede','dpgeceti')
@@ -62,20 +67,31 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
     .then(response => {
       const {data: { results }} = response
       if(results) {
-        let eventoFeriados = [];
-        results.map((feriado: IFeriado) => {
-          eventoFeriados.push({
-            title: feriado.descricao,
-            start: Date.now()
-          })
-        });
 
-        console.log(results)
+          results.map((feriado: IFeriado) => {
+            setCurrentEvents(events => [...events, {
+              id: feriado.id,
+              title: feriado.descricao,
+              start: ajustarData(feriado.dia, feriado.mes)
+            }]);
+          });
+        
       }
+
+
     })
     .catch(err => console.log(err))
   }
-  
+
+  function ajustarData(dia: number, mes: number){
+    let ano_atual = new Date().getFullYear();
+    let mes_fix = mes.toString().padStart(2, '0');
+    let dia_fix = dia.toString().padStart(2, '0');
+    let dataAjustada = ano_atual+"-"+mes_fix+"-"+dia_fix;
+    return  dataAjustada;
+  }
+
+
   return (
     <BaseContext.Provider 
       value={{ 
