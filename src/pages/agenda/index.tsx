@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { formatDate } from '@fullcalendar/core'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -10,8 +10,12 @@ import {IEvento} from '../../interfaces/IEvento';
 
 export default function Agenda() {
     
-    const { weekendsVisible, setWeekendsVisible, currentEvents, setCurrentEvents } = useBase();
+    const { setAlertText, weekendsVisible, setWeekendsVisible, currentEvents, setCurrentEvents } = useBase();
 
+    useEffect(() => {
+        setAlertText("Alerta na tela de Agenda")
+    }, [])
+    
     return (
         <>
         <div className='demo-app-sidebar-section d-flex'>

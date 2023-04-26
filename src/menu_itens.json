@@ -10,14 +10,14 @@
             "separador": true
         },
         {
-            "link": "/",
-            "nome": "Segundo Link",
+            "link": "/tabela",
+            "nome": "Tabelas",
             "novo": false,
             "icone": "fa-ellipsis-h"
         },
         {
-            "link": "/",
-            "nome": "Terceiro Link",
+            "link": "/estatistica",
+            "nome": "Gráfico",
             "novo": false,
             "icone": "fa-ellipsis-h"
         }
