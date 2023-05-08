@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return <>
       <BaseProvider>
         <>
-          <Menu />          
+          <Menu />    
           <Header />
           <div className='content-wrapper'>
             <AlertBootstrap></AlertBootstrap>

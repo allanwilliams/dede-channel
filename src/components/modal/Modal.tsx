@@ -7,8 +7,7 @@ export default function ModalBootstrap() {
   const {
     modalOpen, 
     setModalOpen, 
-    modalText, 
-    setModalText
+    modalText
   } = useBase();
   
   const FecharModal = () => setModalOpen(false);
@@ -17,7 +16,7 @@ export default function ModalBootstrap() {
   return (
     <>
       <Button variant="primary" onClick={AbrirModal}>
-        <i className='fa fa-eye' /> Ver mais
+        <i className='fa fa-eye' /> Abrir
       </Button>
 
       <Modal 
