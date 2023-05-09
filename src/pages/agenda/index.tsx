@@ -1,12 +1,13 @@
 import React, { useEffect, useState} from 'react';
 import { formatDate } from '@fullcalendar/core'
 import FullCalendar from '@fullcalendar/react'
+import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { useBase } from '@/contexts/base';
 import {IEvento} from '../../interfaces/IEvento';
-
+import { format } from 'date-fns';
 
 export default function Agenda() {
     
@@ -18,7 +19,7 @@ export default function Agenda() {
     
     return (
         <>
-        <div className='demo-app-sidebar-section d-flex'>
+        <div className='demo-app-sidebar-section'>
           <h1>Agenda </h1>
           <label>
             <input
@@ -31,24 +32,8 @@ export default function Agenda() {
         </div>
         <hr/>
         <div className="row">
-            <div className="col-md-12">            
+            <div className="col-md-9 col-xs-12">
                 <div className='demo-app'>
-                    <div className='demo-app-sidebar'>
-                        {/* <div className='demo-app-sidebar-section'>
-                            <h2>Instruções</h2>
-                            <ul>
-                            <li>Selecione a data desejada para criar um novo evento</li>
-                            <li>Arraste para remarcar seu evento</li>
-                            <li>Clique no evento para deletá-lo</li>
-                            </ul>
-                        </div>         */}
-                        <div className='demo-app-sidebar-section' id="eventos">
-                            <h2>Eventos ({currentEvents.length})</h2>
-                            <ul>
-                            {currentEvents.map(renderSidebarEvent)}
-                            </ul>
-                        </div>
-                    </div>
                     <div className='demo-app-main'>
                         <FullCalendar
                             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -58,7 +43,7 @@ export default function Agenda() {
                                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
                             }}
                             initialView='timeGridWeek'
-                            locale = {'pt-BR'}
+                            locale={ptBrLocale}
                             editable={true}
                             selectable={true}
                             selectMirror={true}
@@ -73,6 +58,18 @@ export default function Agenda() {
                             eventChange={() => { alert('Evento alterado com sucesso') } }
                             eventRemove={() => { alert('Evento excluído com sucesso') } }
                         />
+                    </div>
+                </div>  
+            </div>
+            <div className="col-md-3 col-xs-12">            
+                <div className='demo-app'>
+                    <div className='demo-app-sidebar'>
+                        <div className='demo-app-sidebar-section' id="eventos">
+                            <h2>Eventos ({currentEvents.length})</h2>
+                            <ul>
+                            {currentEvents.map(renderSidebarEvent)}
+                            </ul>
+                        </div>
                     </div>
                 </div>              
             </div>
@@ -123,14 +120,12 @@ export default function Agenda() {
   }
   
   function renderSidebarEvent(event: IEvento) {
+
     return (
-      <li key={event.id}>
+      <li key={event.title}>
         <p>
           {event.title} - &nbsp;
-          <strong>{formatDate(event.start, {
-             timeZone: 'America/Fortaleza',
-             locale: 'pt-BR'
-          })}</strong>
+          <strong>{format(event.start, 'dd/MM/yyyy HH:mm:ss')}</strong>
         </p>
       </li>
     )
