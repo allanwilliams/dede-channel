@@ -21,15 +21,7 @@
 }
 
 .main-header {
-  border-bottom: 1px solid var(--cor-principal);
-  margin-bottom: 1rem;
+  position: absolute;
+  width: 100%;
   margin-left: var(--margin-content-size) !important;
-}
-
-.animate {
-  transition: transform .35s ease-in-out;
-}
-
-.animate.grow {
-  transform: scale(1.5);
 }

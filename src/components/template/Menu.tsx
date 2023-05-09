@@ -10,7 +10,7 @@ export default function Menu() {
     let classMenuEffect = menuOpen ? "animate__slideInLeft" : "animate__slideOutLeft";
     
     return (
-        <div className={`main-sidebar background-principal elevation-4 animate__animated ${classMenuEffect}`}>
+        <div className={`main-sidebar background-principal elevation-4 animate__animated animate__faster ${classMenuEffect}`} id="menu-lateral">
                 
                 <Link href="/" className="brand-link">
                     <img src="dist/img/logo_nossa_menu.png" alt="Nossa Defensoria" className="brand-image" style={{ opacity: '.8' }} />

@@ -15,25 +15,20 @@ export default function Inicial() {
 
     return (
         <div>
-            <div className="content-header">
-                <div className="container-fluid">
-                    <div className="row mb-2">
-                        <div className="col-sm-6">
-                            <h1 className="m-0">Tela Inicial </h1>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <section className="content">
+                            
+                <BoxInfo/>
+
+                <hr/>
+
                 <div className="row">
                     <div className="col-md-6 col-xs-12">
                         <ModalSistema/>
                     </div>
                 </div>
-                            
-                <BoxInfo/>
-                                 
+                
+
             </section>
         </div>
     )

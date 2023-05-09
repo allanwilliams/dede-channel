@@ -2,7 +2,8 @@ import '@/styles/globals.css'
 import '@/styles/style.css';
 import '@/styles/calendario.css'
 import type { AppProps } from 'next/app'
-import Header from '../components/template/Header'
+import Header from '../components/template/Header';
+import HeaderTeste from '../components/template/HeaderTeste';
 import Footer from '../components/template/Footer';
 import Menu from '../components/template/Menu';
 import AlertBootstrap from '../components/alerts/AlertBootstrap';
