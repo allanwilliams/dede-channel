@@ -42,7 +42,7 @@ export const BaseProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(
     debounce(() => {
-      getNewToken()
+      // getNewToken()
     }, 300), 
     []
   );

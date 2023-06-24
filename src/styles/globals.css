@@ -154,3 +154,29 @@ footer {
   }
 }
 
+.gap-2{
+  gap: 2em;
+}
+
+.gap-1{
+  gap: 1em;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.modalChatAnexo .modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 70vh;
+  width: 70vw;
+}

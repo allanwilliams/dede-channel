@@ -1,3 +1,4 @@
+import Link from "next/link"
 export default function BoxInfo (){
 
     return (
@@ -11,7 +12,7 @@ export default function BoxInfo (){
                     <div className="icon">
                         <i className="ion ion-stats-bars" />
                     </div>
-                    <a href="/" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                    <Link href="/" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></Link>
                 </div>
             </div>
         </div>  

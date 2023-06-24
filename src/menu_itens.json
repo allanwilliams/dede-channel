@@ -20,6 +20,12 @@
             "nome": "Gráfico",
             "novo": false,
             "icone": "fa-ellipsis-h"
+        },
+        {
+            "link": "/chat",
+            "nome": "Chat",
+            "novo": false,
+            "icone": "fa-ellipsis-h"
         }
     ]
 }
