@@ -180,3 +180,7 @@ footer {
   height: 70vh;
   width: 70vw;
 }
+
+.chat-page .dropdown-toggle::after {
+  display: none !important; 
+}

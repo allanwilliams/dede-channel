@@ -1,7 +1,7 @@
 
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { Chat, Canal, ChatConfig, Anexo, Status, Mensagem } from '@/interfaces/chat';
-import { chatsMock, canaisMock, statusMock } from '@/mocks/chats';
+import { chatsMock, canaisMock, statusMock } from '@/mocks/chats'
 import moment from 'moment';
 
 interface ChatContextData {
@@ -25,6 +25,8 @@ interface ChatContextData {
   setOpenInfoBar: Function;
   sendMessage: Function;
   saveChat: Function;
+  openHistoricoBar: boolean;
+  setOpenHistoricoBar: Function;
 };
 
 const ChatContext = createContext<ChatContextData>({} as ChatContextData);
@@ -41,6 +43,7 @@ export const ChatProvider: React.FC<Props> = ({ children }) => {
   const [ anexoOpen , setAnexoOpen ] = useState<Anexo|undefined>();
   const [ status, setStatus ] = useState<Array<Status>>(statusMock)
   const [ openInfoBar, setOpenInfoBar ] = useState<boolean>(false)
+  const [ openHistoricoBar, setOpenHistoricoBar ] = useState<boolean>(false)
 
   const sendMessage = function (e: any) {
     if (selectConfig && openChat) {
@@ -125,6 +128,7 @@ export const ChatProvider: React.FC<Props> = ({ children }) => {
           status, setStatus,
           openInfoBar, setOpenInfoBar,
           sendMessage,saveChat,
+          openHistoricoBar, setOpenHistoricoBar
       }}>
         {children}
     </ChatContext.Provider>

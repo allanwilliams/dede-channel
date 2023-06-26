@@ -1,10 +1,16 @@
-export const statusMock = [
+import { Status, Assistido, Anexo, Canal, ChatConfig, Mensagem, Chat, Finalizacao, Historico } from "@/interfaces/chat"
+
+export const statusMock: Array<Status> = [
     { id: 1, nome: 'Em Atendimento' },
     { id: 2, nome: 'Finalizado' }
 ]
 
+export const finalizacoesMock: Array<Finalizacao> = [
+    { id: 1, nome: 'sucesso' },
+    { id: 2, nome: 'insucesso' }
+]
 
-export const assistidos = [{
+export const assistidos: Array<Assistido> = [{
     id: 1,
     nome: 'Laura'
 },{
@@ -12,7 +18,7 @@ export const assistidos = [{
     nome: 'Lauro'
 }]
 
-export const anexos = [
+export const anexos: Array<Anexo> = [
     {
         id: 1,
         mensagem_id: 1,
@@ -27,14 +33,27 @@ export const anexos = [
     }
 ]
 
-export const canaisMock = [
+export const historicos: Array<Historico> = [
+    {
+        id: 1,
+        chat_id: 1,
+        operador_id: 1,
+        status_id: 1,
+        finalizacao_id: 1,
+        comentario: `comentario`,
+        protocolo: `protocolo`,
+        chat_config_id: 1
+    }
+]
+
+export const canaisMock: Array<Canal> = [
     { id: 1,nome: 'whatsapp'},
     { id: 2,nome: 'facebook'},
     { id: 3,nome: 'telegram'},
     { id: 4,nome: 'e-mail'},
 ]
 
-export const chat_config = [
+export const chat_config: Array<ChatConfig> = [
     {
         id: 1,
         canal: canaisMock[0],
@@ -54,7 +73,7 @@ export const chat_config = [
     }
 ]
 
-export const mensagens = [
+export const mensagens: Array<Mensagem> = [
     {
         id: 1,
         mensagem: 'teste msg 1',
@@ -150,13 +169,14 @@ export const mensagens = [
     }
 ]
 
-export const chatsMock = [
+export const chatsMock: Array<Chat> = [
     {
         id: 1,
         assistido: assistidos[0],
         mensagens: mensagens.slice(0,5),
         configuracoes_chat: [chat_config[0],chat_config[1],chat_config[2]],
-        status_id: 1
+        status_id: 1,
+        historicos: historicos
     },{
         id: 2,
         assistido: assistidos[1],

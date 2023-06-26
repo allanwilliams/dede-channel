@@ -5,6 +5,7 @@ import { useChatContext } from "@/contexts/chat";
 import { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import { Mensagem } from "@/interfaces/chat";
+import { NavDropdown } from "react-bootstrap";
 
 function ChatScreen() {
     const formRef = useRef<HTMLFormElement>(null)
@@ -59,7 +60,15 @@ function ChatScreen() {
                     <div>{openChat?.assistido.nome}</div>
                 </div>
                 <div className="d-flex justify-content-around align-items-center">
-                    <span><i className='fa fa-ellipsis-h fa-rotate-90' /></span>
+                    <NavDropdown title={<span><i className='fa fa-ellipsis-h fa-rotate-90' /></span>} id="collasible-nav-dropdown-notificacao">
+                        <NavDropdown.Item href="#action/3.1">Notificação 1</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.1">Notificação 2</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.1">Notificação 3</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="#action/3.4">
+                            Marcar todas como lida
+                        </NavDropdown.Item>
+                    </NavDropdown>
                 </div>
             </div>
             <div style={{'overflow': 'scroll',  'backgroundImage': `url(/dist/img/background-chat.png/)` }} className="d-flex bg-secondary flex-column h-100 p-3">
