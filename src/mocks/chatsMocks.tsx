@@ -37,12 +37,13 @@ export const historicos: Array<Historico> = [
     {
         id: 1,
         chat_id: 1,
-        operador_id: 1,
+        usuario_id: 1,
         status_id: 1,
         finalizacao_id: 1,
-        comentario: `comentario`,
-        protocolo: `protocolo`,
-        chat_config_id: 1
+        anotacao: 'anotação teste',
+        protocolo: '001123/2023',
+        chat_config_id: 1,
+        criado_em: '01/01/2023'
     }
 ]
 
@@ -51,6 +52,8 @@ export const canaisMock: Array<Canal> = [
     { id: 2,nome: 'facebook'},
     { id: 3,nome: 'telegram'},
     { id: 4,nome: 'e-mail'},
+    { id: 5,nome: 'dona dede'},
+    { id: 6,nome: 'app'},
 ]
 
 export const chat_config: Array<ChatConfig> = [

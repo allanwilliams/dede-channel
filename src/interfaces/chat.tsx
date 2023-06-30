@@ -1,4 +1,5 @@
 interface DefaultFields {
+    id: number,
     criado_em?: string,
     atualizado_em?: string,
     criado_por_id?: number,
@@ -6,37 +7,32 @@ interface DefaultFields {
 }
 
 interface DefaultSimpleClass extends DefaultFields {
-    id: number,
     nome: string
 }
 
 export interface ChatConfig extends DefaultFields {
-    id: number,
     canal: Canal,
     chave_cliente_canal: string
 }
 
 export interface Chat extends DefaultFields {
-    id: number,
     assistido: Assistido,
     mensagens: Array<Mensagem>,
     configuracoes_chat: Array<ChatConfig>,
     status_id: number,
-    operador_id?: number, //alterar para modelo
+    usuario_id?: number, //alterar para modelo
     ultima_interacao_assistido?: string,
-    ultima_interacao_operador?: string,
+    ultima_interacao_usuario?: string,
     em_fila?: boolean,
-    historicos?: Array<Historico>
+    historicos?: Array<Historico>,
 }
 
 export interface Assistido extends DefaultFields {
-    id: number,
     nome: string,
     cpf?: string,
 }
 
 export interface Mensagem extends DefaultFields {
-    id: number,
     mensagem: string,
     chat_config_id: number,
     chat_id: number,
@@ -44,7 +40,7 @@ export interface Mensagem extends DefaultFields {
     lida: boolean,
     from_assistido: boolean,
     from_bot?: boolean,
-    operador_id?: number,
+    usuario_id?: number,
     data_hora: string,
     ack: number,
     anexo?: Anexo,
@@ -54,7 +50,6 @@ export interface Mensagem extends DefaultFields {
 export interface Canal extends DefaultSimpleClass {}
 
 export interface Anexo extends DefaultFields {
-    id: number,
     mensagem_id: number,
     file: string,
     tipo: number
@@ -63,14 +58,19 @@ export interface Anexo extends DefaultFields {
 export interface Status extends DefaultSimpleClass { }
 
 export interface Historico extends DefaultFields {
-    id: number,
     chat_id: number,
-    operador_id: number,
+    usuario_id: number,
     status_id: number,
     finalizacao_id: number,
-    comentario: string,
+    anotacao: string,
     protocolo: string,
     chat_config_id: number
 }
 
 export interface Finalizacao extends DefaultSimpleClass { }
+
+export interface Usuario extends DefaultFields {
+    nome: string;
+    cpf?: string;
+    matricula?: string;
+}

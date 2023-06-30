@@ -15,6 +15,7 @@ function ChatScreen() {
         selectConfig, setSelectConfig,
         selectCanal,
         openInfoBar, setOpenInfoBar,
+        openHistoricoBar, setOpenHistoricoBar,
         sendMessage,
     } = useChatContext()
 
@@ -61,13 +62,7 @@ function ChatScreen() {
                 </div>
                 <div className="d-flex justify-content-around align-items-center">
                     <NavDropdown title={<span><i className='fa fa-ellipsis-h fa-rotate-90' /></span>} id="collasible-nav-dropdown-notificacao">
-                        <NavDropdown.Item href="#action/3.1">Notificação 1</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.1">Notificação 2</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.1">Notificação 3</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">
-                            Marcar todas como lida
-                        </NavDropdown.Item>
+                        <NavDropdown.Item onClick={()=>{setOpenHistoricoBar(true)}}>Históricos</NavDropdown.Item>
                     </NavDropdown>
                 </div>
             </div>

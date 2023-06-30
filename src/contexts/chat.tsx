@@ -1,7 +1,7 @@
 
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { Chat, Canal, ChatConfig, Anexo, Status, Mensagem } from '@/interfaces/chat';
-import { chatsMock, canaisMock, statusMock } from '@/mocks/chats'
+import { chatsMock, canaisMock, statusMock } from '@/mocks/chatsMocks'
 import moment from 'moment';
 
 interface ChatContextData {
