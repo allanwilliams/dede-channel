@@ -8,20 +8,33 @@ import Footer from '../components/template/Footer';
 import Menu from '../components/template/Menu';
 import AlertBootstrap from '../components/alerts/AlertBootstrap';
 import { BaseProvider, useBase } from '../contexts/base';
+import { SessionProvider } from "next-auth/react"
+import SignIn from './login'
+import { useRouter } from 'next/router'
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App(props: AppProps) {
+  const router = useRouter()
+  const { Component, pageProps: { session, ...pageProps } } = props;
 
-  return <>
-      <BaseProvider>
+  return <SessionProvider session={session}>
+    <BaseProvider>
+      {Component.hasOwnProperty('auth') ? (
+        <SignIn>
+          <Component {...pageProps} />
+        </SignIn>
+      ) : (
         <>
-          <Menu />    
+          <Menu />
           <Header />
           <div className='content-wrapper'>
             <AlertBootstrap></AlertBootstrap>
-            <Component {...pageProps} />
+            <>
+              <Component {...pageProps} />
+            </>
             <Footer />
           </div>
-        </>        
-      </BaseProvider>      
-  </>
+        </>
+      )}
+    </BaseProvider>
+  </SessionProvider>
 }
