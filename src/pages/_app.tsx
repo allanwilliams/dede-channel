@@ -18,23 +18,21 @@ export default function App(props: AppProps) {
 
   return <SessionProvider session={session}>
     <BaseProvider>
-      {Component.hasOwnProperty('auth') ? (
+      {/* {Component.hasOwnProperty('auth') ? (
         <SignIn>
           <Component {...pageProps} />
         </SignIn>
-      ) : (
+      ) : ( */}
         <>
           <Menu />
           <Header />
           <div className='content-wrapper'>
             <AlertBootstrap></AlertBootstrap>
-            <>
-              <Component {...pageProps} />
-            </>
+            <Component {...pageProps} />            
             <Footer />
           </div>
         </>
-      )}
+      {/* )} */}
     </BaseProvider>
   </SessionProvider>
 }

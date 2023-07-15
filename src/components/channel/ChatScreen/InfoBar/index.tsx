@@ -1,4 +1,5 @@
 import { Button, Form, Image } from "react-bootstrap"
+import ModalAddContact from "../ModalAddContact"
 import { useChatContext } from "@/contexts/chat"
 
 function InfoBar(){
@@ -7,15 +8,15 @@ function InfoBar(){
         openChat, setOpenChat,
         setSelectCanal, setSelectConfig,
         status, openInfoBar,
-        saveChat
+        saveChat, tiposContato
     } = useChatContext()
 
     const handleChannelChange = function(value: any){
-        setSelectCanal(canais[value - 1])
+        setSelectCanal(canais.filter(c => c.id == value)[0])
     }
 
     const handleConfigChange = function(value: any){
-        setSelectConfig(openChat?.configuracoes_chat.find(config => config.id == value))
+        setSelectConfig(openChat?.ChatConfig.find(config => config.id == value))
     }
 
     const handleOnChangeFormOpenChat = (e: any)=>{
@@ -32,10 +33,13 @@ function InfoBar(){
     }
 
     const handleSaveChat = function(){
-        saveChat(openChat)
+        saveChat(openChat,true)
     }
 
-    const configsPerChannel = openChat?.configuracoes_chat.filter(config => config.canal.id == selectCanal.id)
+    const configsPerChannel = openChat?.ChatConfig.filter(config => config.canal.id == selectCanal?.id)
+
+    const getTipoContato = (id: string) => tiposContato.filter(t => t.id == id)[0].nome
+
 
     return (<>{openChat && openInfoBar && <div className="d-flex flex-column border w-25 h-100 p-3">
         
@@ -44,7 +48,7 @@ function InfoBar(){
                     <Form.Label>Canais</Form.Label>
                     <Form.Select
                         className="form-control"
-                        value={selectCanal.id}
+                        value={selectCanal?.id}
                         onChange={(e)=>{handleChannelChange(e.target.value)}}
                     >
                         {canais.map(canal => (
@@ -56,9 +60,12 @@ function InfoBar(){
                     <Form.Label>Contatos</Form.Label>
                     <Form.Select className="form-control" onChange={(e)=>{handleConfigChange(e.target.value)}}>
                         {configsPerChannel?.map(config => (
-                            <option key={config.id} value={config.id}>{config.chave_cliente_canal} </option>
+                            <option key={config.id} value={config.id}>{config.chave_cliente_canal} - {getTipoContato(config.tipo_contato_id)} </option>
                         ))}
                     </Form.Select>
+                    {['WHATSAPP','EMAIL'].includes(selectCanal.nome.toUpperCase()) && 
+                        <ModalAddContact />
+                    }
                 </div>
                 <hr/>
                 <h2>Dados do assistido</h2>
@@ -67,7 +74,7 @@ function InfoBar(){
                         <Image className="mr-2" roundedCircle thumbnail width={90} src='dist/img/avatar.png' />
                     </div>
                     <Form.Label>Nome</Form.Label>
-                    <Form.Control name='assistido.nome' className="form-control" value={openChat.assistido.nome} onChange={handleOnChangeFormOpenChat} />
+                    <Form.Control name='Assistido.nome' className="form-control" value={openChat.Assistido?.nome} onChange={handleOnChangeFormOpenChat} />
                     <Form.Label>Status</Form.Label>
                     <Form.Select name='status_id' className="form-control" value={openChat.status_id} onChange={handleOnChangeFormOpenChat}>
                         {status?.map(state => (

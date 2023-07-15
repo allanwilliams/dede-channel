@@ -13,7 +13,7 @@ function Message({ mensagem }: props) {
 
     const getTime = function(mensagem: Mensagem) {
         const hoje = moment()
-        const hr = moment(mensagem.data_hora, 'YYYY-MM-DD HH:mm:ss')
+        const hr = moment(mensagem.criado_em, 'YYYY-MM-DD HH:mm:ss')
         const format = hoje.isSame(hr,'day') ? 'HH:mm' : 'DD/MM/YYYY HH:mm'
         return hr.format(format)
     }

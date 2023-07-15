@@ -24,4 +24,4 @@ export default function ChatPage() {
   )
 }
 
-ChatPage.auth = true
+// ChatPage.auth = true

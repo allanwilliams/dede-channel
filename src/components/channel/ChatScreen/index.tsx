@@ -20,15 +20,15 @@ function ChatScreen() {
     } = useChatContext()
 
     useEffect(() => {
-        if(!selectConfig || openChat?.configuracoes_chat.map(config => {if (config.id && config.canal.id == selectCanal.id) return config.id}).indexOf(selectConfig.id) == -1 ){
-            const firstConfig = openChat?.configuracoes_chat.filter(config => config.canal.id == selectCanal.id)[0]
+        if(!selectConfig || openChat?.ChatConfig.map(config => {if (config.id && config.canal.id == selectCanal?.id) return config.id}).indexOf(selectConfig.id) == -1 ){
+            const firstConfig = openChat?.ChatConfig.filter(config => config.canal.id == selectCanal?.id)[0]
             setSelectConfig(firstConfig)
         }
     }, [selectCanal,openChat])
     
 
     const chatsPerChannel = function(channel_id: number){
-        if (openChat) return openChat.configuracoes_chat.filter(config => config.canal.id == channel_id).length
+        if (openChat) return openChat.ChatConfig.filter(config => config.canal.id == channel_id).length
     }
 
     const handleSendMessage = function(e: any){
@@ -50,15 +50,14 @@ function ChatScreen() {
         }
     }
 
-    const showMessages = openChat?.mensagens.filter(mensagem => mensagem.chat_config_id == selectConfig?.id )
-
+    const showMessages = openChat?.Mensagem.filter(mensagem => mensagem.chat_config_id == selectConfig?.id )
 
     return (
         <div className="d-flex flex-column border w-75 h-100">
             <div className="d-flex justify-content-between p-3">
                 <div role='button' onClick={handleOpenInfoBar} className="d-flex align-items-center">
                     <Image className="mr-2" roundedCircle thumbnail width={45} src='dist/img/avatar.png' />
-                    <div>{openChat?.assistido.nome}</div>
+                    <div>{openChat?.Assistido.nome}</div>
                 </div>
                 <div className="d-flex justify-content-around align-items-center">
                     <NavDropdown title={<span><i className='fa fa-ellipsis-h fa-rotate-90' /></span>} id="collasible-nav-dropdown-notificacao">

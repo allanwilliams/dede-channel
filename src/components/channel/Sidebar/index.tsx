@@ -11,7 +11,7 @@ function Sidebar() {
     const [filterChat, setFilterChat] = useState<string>('')
 
     const filteredChats = chats.filter(chat => { 
-        if (filterChat) return chat.assistido.nome.toLocaleLowerCase().includes(filterChat.toLocaleLowerCase())
+        if (filterChat) return chat.Assistido?.nome.toLocaleLowerCase().includes(filterChat.toLocaleLowerCase())
         return chat
     })
     

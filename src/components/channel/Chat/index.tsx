@@ -20,7 +20,7 @@ function Chat({chat}: props) {
     }
 
     const getBadgeNum = function(chat: Chat){
-        return chat.mensagens.filter(c => !c.lida).length
+        return chat.Mensagem?.filter(c => !c.lida).length
     }
 
     return (
@@ -29,7 +29,7 @@ function Chat({chat}: props) {
                 <Image roundedCircle thumbnail width={60} src='dist/img/avatar.png' />
             </Col>
             <div className="d-flex justify-content-between w-100">
-                <div>{chat.assistido.nome}</div>
+                <div>{chat.Assistido?.nome}</div>
                 <div><Badge pill>{getBadgeNum(chat)}</Badge></div>
             </div>
         </div>
