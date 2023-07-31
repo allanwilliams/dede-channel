@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const apiWs = axios.create({
   //baseURL: 'https://nossa.defensoria.ce.def.br/',
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://127.0.0.1:3000/',
   headers: {
     Accept: 'application/json',
   },

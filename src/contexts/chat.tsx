@@ -7,6 +7,7 @@ import chatService, { ChatConfigCreateDto } from '@/services/chat'
 import moment from 'moment';
 import io, { Socket } from 'socket.io-client'
 import crypto from 'crypto';
+import { useBase } from './base';
 
 interface ChatContextData {
   chats: Array<Chat>;
@@ -41,6 +42,8 @@ const ChatContext = createContext<ChatContextData>({} as ChatContextData);
 type Props = { children: JSX.Element};
 
 export const ChatProvider: React.FC<Props> = ({ children }) => {
+  const { setAlertOpen, setAlertText, setAlertVariant } = useBase();
+
   const [ socket , setSocket ] = useState<Socket>({} as Socket);
   const [ chats , setChats ] = useState<Array<Chat>>([]);
   const [ canais , setCanais ] = useState<Array<Canal>>(canaisMock);
@@ -143,9 +146,11 @@ export const ChatProvider: React.FC<Props> = ({ children }) => {
   }
 
   const addContato = function(contato: ChatConfigCreateDto){
-    console.log('contato',contato)
     chatService.addContato(contato).then(result => {
-      console.log(result)
+      setAlertOpen(true);
+      setAlertVariant('primary');
+      setAlertText('Contato cadastrado com sucesso')
+      setTimeout(()=>{setAlertOpen(false);},1000)
       openChat?.ChatConfig.push(result.data)
       if(openChat) saveChat(openChat)
     })
@@ -173,7 +178,7 @@ export const ChatProvider: React.FC<Props> = ({ children }) => {
   }
 
   const socketInitializer = async () => {
-    const socket = io('http://localhost:3000/atendimento');
+    const socket = io('http://127.0.0.1:3000/atendimento');
       socket.on('connect', function() {
         console.log('Connected');
 

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import moment from "moment";
 import { Mensagem } from "@/interfaces/chat";
 import { NavDropdown } from "react-bootstrap";
+import ModalGravarAtendimento from "./ModalGravarAtendimento";
 
 function ChatScreen() {
     const formRef = useRef<HTMLFormElement>(null)
@@ -27,7 +28,7 @@ function ChatScreen() {
     }, [selectCanal,openChat])
     
 
-    const chatsPerChannel = function(channel_id: number){
+    const chatsPerChannel = function(channel_id: string|undefined){
         if (openChat) return openChat.ChatConfig.filter(config => config.canal.id == channel_id).length
     }
 
@@ -57,11 +58,12 @@ function ChatScreen() {
             <div className="d-flex justify-content-between p-3">
                 <div role='button' onClick={handleOpenInfoBar} className="d-flex align-items-center">
                     <Image className="mr-2" roundedCircle thumbnail width={45} src='dist/img/avatar.png' />
-                    <div>{openChat?.Assistido.nome}</div>
+                    <div>{openChat?.Assistido?.nome}</div>
                 </div>
                 <div className="d-flex justify-content-around align-items-center">
                     <NavDropdown title={<span><i className='fa fa-ellipsis-h fa-rotate-90' /></span>} id="collasible-nav-dropdown-notificacao">
                         <NavDropdown.Item onClick={()=>{setOpenHistoricoBar(true)}}>Históricos</NavDropdown.Item>
+                        <ModalGravarAtendimento />
                     </NavDropdown>
                 </div>
             </div>
