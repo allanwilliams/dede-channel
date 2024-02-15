@@ -90,13 +90,15 @@ export const ChatProvider: React.FC<Props> = ({ children }) => {
           newOpenChat.Mensagem.push(newMessage)
           setOpenChat(newOpenChat)
           saveChat(newOpenChat)
+          socket.emit('sendMessage',newMessage)
+          //socket.emit('sendAnexo',anx)
         })
       } else {
         newOpenChat.Mensagem.push(newMessage)
         setOpenChat(newOpenChat)
         saveChat(newOpenChat)
+        socket.emit('sendMessage',newMessage)
       }
-      socket.emit('sendMessage',newMessage)
     }
   }
 
